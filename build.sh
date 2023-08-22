@@ -1,3 +1,3 @@
 #!/bin/bash
 
-eval "docker image build -t noetic-pytorch:cuda-11.4 ."
+eval "docker image build -t masakifujiwara1/noetic-pytorch:cuda-11.5 ."
