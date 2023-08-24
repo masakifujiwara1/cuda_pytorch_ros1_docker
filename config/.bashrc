@@ -102,6 +102,8 @@ fi
 
 source /opt/ros/noetic/setup.bash
 source ~/catkin_ws/devel/setup.bash
+export ROS_MASTER_URI=http://localhost:11311
+export ROS_HOSTNAME=localhost
 
 export ROS_WORKSPACE=${HOME}/catkin_ws
 
