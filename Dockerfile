@@ -1,4 +1,4 @@
-FROM anibali/pytorch:1.11.0-cuda11.5-ubuntu20.04
+FROM osrf/ros:noetic-desktop-full
 
 SHELL ["/bin/bash", "-c"]
 
@@ -13,7 +13,7 @@ ENV NVIDIA_DRIVER_CAPABILITIES ${NVIDIA_DRIVER_CAPABILITIES:+$NVIDIA_DRIVER_CAPA
 
 # SHELL ["/bin/bash", "-c"]
 
-# install apt apps
+# install apt
 RUN sudo apt-get update && sudo apt-get -y upgrade
 RUN sudo -s && sudo ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime && sudo apt-get -y install tzdata
 RUN sudo apt-get update && sudo apt-get install -y vim git lsb-release gnupg tmux curl
@@ -22,15 +22,8 @@ RUN sudo DEBIAN_FRONTEND=noninteractive apt-get install -y keyboard-configuratio
 # install pip3
 RUN sudo apt-get install -y python3-pip
 
-# ros noetic setup
-RUN git clone https://github.com/ryuichiueda/ros_setup_scripts_Ubuntu20.04_desktop.git
-# RUN ./ros_setup_scripts_Ubuntu20.04_desktop/step0.bash 
-RUN ./ros_setup_scripts_Ubuntu20.04_desktop/step1.bash
-
 RUN sudo apt-get install -y ros-noetic-rqt-* 
 RUN sudo apt-get install -y python3-catkin-tools
-
-ENV USER user
 
 # set catkin workspace
 COPY config/git_clone.sh /home/user/git_clone.sh
